@@ -1,2 +1,0 @@
-# Glucose
-encyclopedia of words
