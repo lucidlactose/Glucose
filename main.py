@@ -23,7 +23,7 @@ class MainHandler(webapp2.RequestHandler):
         parsed_giphy_dictionary = json.loads(giphy_response)
 
         used = []
-        random_gif = random.randint(0,9)
+        random_gif = random.randint(0,5)
         images = []
 
         while len(images) < 10:
