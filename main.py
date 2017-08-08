@@ -16,7 +16,7 @@ class MainHandler(webapp2.RequestHandler):
 
     def post(self):
         base_url = "http://api.giphy.com/v1/gifs/search?"
-        search = self.request.get("query")
+        search = self.request.get('query')
         url_params = {'q': search, 'api_key': 'dc6zaTOxFJmzC', 'limit': 10}
         giphy_response = urllib2.urlopen(base_url + urllib.urlencode(url_params)).read()
         parsed_giphy_dictionary = json.loads(giphy_response)
