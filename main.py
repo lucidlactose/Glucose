@@ -4,6 +4,7 @@ import json
 import os
 import urllib
 import urllib2
+import random
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -20,9 +21,20 @@ class MainHandler(webapp2.RequestHandler):
         url_params = {'q': search, 'api_key': 'dc6zaTOxFJmzC', 'limit': 10}
         giphy_response = urllib2.urlopen(base_url + urllib.urlencode(url_params)).read()
         parsed_giphy_dictionary = json.loads(giphy_response)
-        gif_url = parsed_giphy_dictionary['data'][0]['images']['original']['url']
+
+        used = []
+        random_gif = random.randint(0,9)
+        images = []
+
+        while len(images) < 10:
+            if random_gif in used:
+                random_gif = random.randint(0,9)
+            else:
+                images.append(parsed_giphy_dictionary['data'][random_gif]['images']['original']['url'])
+                used.append(random_gif)
+
         template_variables = {
-            "url": gif_url
+            "urls": images
         }
         results_template = jinja_environment.get_template("templates/results.html")
 

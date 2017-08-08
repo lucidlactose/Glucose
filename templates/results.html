@@ -31,7 +31,10 @@
       </div>
       <div id="box5">
         <h2>Gif's</h2>
-        <img src="{{url}}" alt="no">
+        {% for url in urls %}
+          <img src="{{url}}" alt="no" witdh = 150px height= 200px>
+        {% endfor %}
+
       </div>
       <div id="box6">
         <h2>Images</h2>
