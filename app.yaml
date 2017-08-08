@@ -5,6 +5,8 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /resources
+  static_dir: static_folder
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
