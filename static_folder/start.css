@@ -1,5 +1,5 @@
 body {
-
+  background: linear-gradient(to right, white , grey);
 }
 
 input[type=text] {
@@ -10,7 +10,7 @@ input[type=text] {
   color: #C92626;
   border: 4px solid #2CB9D9;
   border-radius: 4px;
-  background-color:
+  background: linear-gradient(to right, white , #b5b9bc );
 }
 
 input[type=submit] {
@@ -34,7 +34,8 @@ input[type=submit] {
   width: 97%;
   height: 125px;
   text-align: center;
-  background-color: 
+  background-color:
+  text-shadow: 2px, 2px;
 
 
 }
@@ -44,6 +45,8 @@ input[type=submit] {
   height: 250px;
   text-align: center;
   font-family: Helvetica, Times, Verdana, Georgia;
+  color: #2CB9D9;
+
 }
 
 #start_button {
