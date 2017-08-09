@@ -34,10 +34,6 @@ input[type=submit] {
   width: 97%;
   height: 125px;
   text-align: center;
-  background-color:
-  text-shadow: 2px, 2px;
-
-
 }
 
 #start_search {
@@ -46,6 +42,7 @@ input[type=submit] {
   text-align: center;
   font-family: Helvetica, Times, Verdana, Georgia;
   color: #2CB9D9;
+  text-shadow: 2px, 2px;
 
 }
 
