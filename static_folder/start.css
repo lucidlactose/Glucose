@@ -1,0 +1,63 @@
+body {
+
+}
+
+input[type=text] {
+  width:50%;
+  height:50px;
+  text-align: center;
+  font-size: 24px;
+  color: #C92626;
+  border: 4px solid #2CB9D9;
+  border-radius: 4px;
+  background-color:
+}
+
+input[type=submit] {
+  width:15%;
+  height: 20px;
+}
+
+#box {
+  width: 40%
+  float:left;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#topper {
+  width: 97%;
+  height: 125px;
+  text-align: center;
+  background-color: 
+
+
+}
+
+#start_search {
+  width: 97%;
+  height: 250px;
+  text-align: center;
+  font-family: Helvetica, Times, Verdana, Georgia;
+}
+
+#start_button {
+
+}
+
+#contents {
+  width: 97%;
+  height: 100px;
+  text-align: center;
+}
+
+#credits {
+  width: 97%;
+  height: 100px;
+  text-align: center;
+}
