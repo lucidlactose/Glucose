@@ -29,19 +29,33 @@ class MainHandler(webapp2.RequestHandler):
         # dict_xml = urllib2.urlopen(dict_base_url + urllib.urlencode(dict_url_params)).read()
 
         used = []
-        random_gif = random.randint(0,7)
+        random_gif = random.randint(0,6)
         images = []
 
-        while len(images) < 8:
+        while len(images) < 7:
             if random_gif in used:
-                random_gif = random.randint(0,7)
+                random_gif = random.randint(0,6)
             else:
                 images.append(parsed_giphy_dictionary['data'][random_gif]['images']['original']['url'])
                 used.append(random_gif)
 
+
+
+        netflix_search ="https://www.netflix.com/search?q="
+        netflix_query = ""
+        for i in search:
+            if i == " ":
+                netflix_query += "%20"
+            else:
+                netflix_query += i
+
+        netflix_search += netflix_query
+
         template_variables = {
-            "urls": images
+            "urls": images,
+            "netflix_query" : netflix_search
         }
+
         results_template = jinja_environment.get_template("templates/results.html")
 
         self.response.write(results_template.render(template_variables))
