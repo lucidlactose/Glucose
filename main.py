@@ -51,6 +51,8 @@ class MainHandler(webapp2.RequestHandler):
 
         youtube_search = "https://www.youtube.com/results?search_query="
         youtube_query =""
+        hulu_search = "https://www.hulu.com/search?q="
+        hulu_query = ""
         for y in search:
             if y == " ":
                 youtube_query += "+"
@@ -59,12 +61,20 @@ class MainHandler(webapp2.RequestHandler):
 
         youtube_search += youtube_query
 
+        for h in search:
+            if h == " ":
+                hulu_query += "+"
+            else:
+                hulu_query += h
+        hulu_search += hulu_query
+
 
 ######################################################################333
         template_variables = {
             "urls": images,
             "netflix_query" : netflix_search,
-            "youtube_query" : youtube_search
+            "youtube_query" : youtube_search,
+            'hulu_query' : hulu_search
         }
         results_template = jinja_environment.get_template("templates/results.html")
         self.response.write(results_template.render(template_variables))
