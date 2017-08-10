@@ -33,9 +33,23 @@ class MainHandler(webapp2.RequestHandler):
                 images.append(parsed_giphy_dictionary['data'][random_gif]['images']['original']['url'])
                 used.append(random_gif)
 
+
+
+        netflix_search ="https://www.netflix.com/search?q="
+        netflix_query = ""
+        for i in search:
+            if i == " ":
+                netflix_query += "%20"
+            else:
+                netflix_query += i
+
+        netflix_search += netflix_query
+
         template_variables = {
-            "urls": images
+            "urls": images,
+            "netflix_query" : netflix_search
         }
+
         results_template = jinja_environment.get_template("templates/results.html")
 
         self.response.write(results_template.render(template_variables))
