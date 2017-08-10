@@ -5,6 +5,7 @@ import os
 import urllib
 import urllib2
 import random
+import requests
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -21,12 +22,10 @@ class MainHandler(webapp2.RequestHandler):
         url_params = {'q': search, 'api_key': 'dc6zaTOxFJmzC', 'limit': 10}
         giphy_response = urllib2.urlopen(base_url + urllib.urlencode(url_params)).read()
         parsed_giphy_dictionary = json.loads(giphy_response)
-# app_id  	3a2897b4
-        dict_base_url = "https://od-api.oxforddictionaries.com/api/v1/entries/en/"
-        dict_url_params = {'q': search, 'api_key': 'fa87cfff2bc23fc87f8679f9413c61b3'}
-        # dict_base_url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/"
-        # dict_url_params = {'': search, 'key': 'ed36c100-f856-46ac-8be5-0fd11b43872b'}
-        # dict_xml = urllib2.urlopen(dict_base_url + urllib.urlencode(dict_url_params)).read()
+#######################################################################################
+        dict_url = "https://od-api.oxforddictionaries.com/api/v1/entries/en/" + search.lower()
+        # dict_request = requests.get(dict_url, headers = {'app_id': '3a2897b4', "app_key": 'fa87cfff2bc23fc87f8679f9413c61b3'})
+        # dict_dict = json.dumps(dict_request.jos())
 
         used = []
         random_gif = random.randint(0,6)
@@ -48,16 +47,15 @@ class MainHandler(webapp2.RequestHandler):
                 netflix_query += "%20"
             else:
                 netflix_query += i
-
         netflix_search += netflix_query
 
+
+######################################################################333
         template_variables = {
             "urls": images,
             "netflix_query" : netflix_search
         }
-
         results_template = jinja_environment.get_template("templates/results.html")
-
         self.response.write(results_template.render(template_variables))
 
 
