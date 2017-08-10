@@ -5,7 +5,7 @@ import os
 import urllib
 import urllib2
 import random
-import requests
+# import requests
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -49,11 +49,22 @@ class MainHandler(webapp2.RequestHandler):
                 netflix_query += i
         netflix_search += netflix_query
 
+        youtube_search = "https://www.youtube.com/results?search_query="
+        youtube_query =""
+        for y in search:
+            if y == " ":
+                youtube_query += "+"
+            else:
+                youtube_query += y
+
+        youtube_search += youtube_query
+
 
 ######################################################################333
         template_variables = {
             "urls": images,
-            "netflix_query" : netflix_search
+            "netflix_query" : netflix_search,
+            "youtube_query" : youtube_search
         }
         results_template = jinja_environment.get_template("templates/results.html")
         self.response.write(results_template.render(template_variables))
