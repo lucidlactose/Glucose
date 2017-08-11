@@ -5,6 +5,10 @@ body {
 .movie_btn {
   width: 25%;
 }
+#hulu_btn {
+  width: 50%;
+  margin: auto;
+}
 
 #input_box {
   margin: auto;

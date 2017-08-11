@@ -67,6 +67,22 @@ class MainHandler(webapp2.RequestHandler):
             else:
                 hulu_query += h
         hulu_search += hulu_query
+        oxford_search = ""
+        haveNew = False
+        new_search = []
+        for h in search:
+            if h == " ":
+                new_search = search.split(" ")
+                haveNew = True
+            else:
+                haveNew = False
+
+
+        if haveNew == True:
+            oxford_search = "https://en.oxforddictionaries.com/definition/" + new_search[0]
+        else:
+            oxford_search = "https://en.oxforddictionaries.com/definition/" + search
+
 
 
 ######################################################################333
@@ -74,7 +90,8 @@ class MainHandler(webapp2.RequestHandler):
             "urls": images,
             "netflix_query" : netflix_search,
             "youtube_query" : youtube_search,
-            'hulu_query' : hulu_search
+            'hulu_query' : hulu_search,
+            'new_search' : oxford_search
         }
         results_template = jinja_environment.get_template("templates/results.html")
         self.response.write(results_template.render(template_variables))
